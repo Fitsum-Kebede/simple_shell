@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * main - A program that prints a text.
@@ -8,6 +8,6 @@
 
 int main(void)
 {
-	printf("This is a simple_shell group project.");
-	return (0);
+        printf("This is a simple_shell group project.");
+        return (0);
 }
