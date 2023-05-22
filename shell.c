@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * input - a function that allows the user to input prompt
+ * @value: to store the input string
+ * @arg: To store command and arguments
+ * Return: noting
+ */
+
 #define MAX_COMMAND 15
 
 void input(char **ca, char **vn)
@@ -50,7 +57,7 @@ if (execve(arg[0], arg, vn) == -1)
 printf("%s: No such file or directory", ca[0]);
 }
 else
-  wait(&sta);
+wait(&sta);
 
 }
 
