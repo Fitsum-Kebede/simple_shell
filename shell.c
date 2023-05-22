@@ -24,7 +24,6 @@ while (1)
 {
 if (isatty(STDIN_FILENO))
 printf("DonebyF&V# ");
-
 st_ch = getline(&value, &m, stdin);
 if (st_ch == -1)
 {
@@ -38,13 +37,10 @@ if (value[nu] == '\n')
 value[nu] = 0;
 nu++;
 }
-
 mb = 0;
 arg[mb] = strtok(value, " ");
 while (arg[mb])
-
 arg[++mb] = strtok(NULL, "");
-
 c_pid = fork();
 if (c_pid == -1)
 {
@@ -58,7 +54,6 @@ printf("%s: No such file or directory", ca[0]);
 }
 else
 wait(&sta);
-
+}
 }
 
-}
