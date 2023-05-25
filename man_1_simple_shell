@@ -1,0 +1,29 @@
+.TH man 1 "May 24 2023" "1.0 Release version" "simple_shell man page"
+
+.SH NAME
+.B simple_shell man page
+
+.SH SYNOPSIS
+.B ./hsh
+
+.SH DESCRIPTION
+simple_shell tries to reproduce the functionalities of the original shell like exit, EOF and much more
+
+.SH BUILTINS
+.B env
+- prints enviroment
+
+.B exit
+- exit the shell
+
+.SH SEE ALSO
+.B The Shell itself
+
+.SH BUGS
+.B NO BUGS :)
+
+.SH AUTHOR
+Clara Berriel, Pichu Otegui y Miguel Pacheco - Holberton School Cohort 14
+
+.SH COPYRIGHT
+Fitsum kebede and Victor lenny Cohort 13 ALX project All rights reserved
