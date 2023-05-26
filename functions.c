@@ -3,7 +3,6 @@
 /**
  * _sle - Counts the length of a string
  * @ring: string to count
- *
  * Return: the ammount of chars of the string
 */
 
@@ -21,7 +20,6 @@ int _sle(char *ring)
 /**
  * _su - duplicates a given string
  * @ring: string to duplicae
- *
  * Return: A pointer to a duplicate of the string given
 */
 
@@ -54,7 +52,6 @@ char *_su(char *ring)
  * split_line - splits a string into a 2d array based on delim
  * @ring: string to split
  * @delim: delimiter to take into account to split the string
- *
  * Return: A double pointer of chars with the string splitted
 */
 
@@ -106,7 +103,6 @@ char **split_line(char *ring, char *delim)
  * _sc - Compares two arrays
  * @origin: 1st array
  * @su: 2nd array
- *
  * Return: 1 if same, 0 if different
 */
 
@@ -129,7 +125,6 @@ int _sc(char *origin, char *su)
 /**
  * nums - Calculates the ammount of digits
  * @n: number to evaluate
- *
  * Return: The ammount of digits
 */
 

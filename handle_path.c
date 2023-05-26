@@ -1,9 +1,9 @@
 #include "shell.h"
+
 /**
  * gen - gets the env variable needed
  * @name: name of the env variable
  * @environ: env variables
- *
  * Return: the line with the env variable
 */
 
@@ -28,7 +28,6 @@ char *gen(char *name, char **environ)
  * gpath - Gets the PATH variable
  * @environ: enviroment variable
  * @input: inp pass by user
- *
  * Return: the splitted PATH variable
 */
 

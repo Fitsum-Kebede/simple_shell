@@ -1,4 +1,7 @@
 #include "shell.h"
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 
 /**
@@ -6,7 +9,6 @@
  * @inp: inp to run
  * @argum: argum to pass to execve
  * @va: name of the program
- *
  * Return: -1 if it breaks, 0 if it doesn't
 */
 
@@ -34,7 +36,6 @@ int ex(char *inp, char **argum, char *va)
  * @ac: Ammount of argum passed
  * @va: Arguments passed
  * @env: Enviroment variables
- *
  * Return: 0 if success
 */
 
@@ -90,7 +91,6 @@ int main(int ac __attribute__((unused)), char **va, char **env)
  * @env: enviroment variable
  * @va: argum
  * @err: error pointer
- *
  * Return: 10 if success, 0 if exit, 1 if continue, -1 if return-1
 */
 
@@ -160,7 +160,6 @@ void no_file(int lns, char *div, char **va)
 /**
  * li_m - Creates the input variable
  * @size: Size of the malloc
- *
  * Return: input
  */
 
