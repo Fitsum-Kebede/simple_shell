@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _sle - Counts the length of a string
- * @ring: string to count
- * Return: the ammount of chars of the string
+ * _sle - determines how long a string is
+ * @ring: counting a string
+ * Return: the string's character count
 */
 
 int _sle(char *ring)
@@ -18,9 +18,9 @@ int _sle(char *ring)
 }
 
 /**
- * _su - duplicates a given string
- * @ring: string to duplicae
- * Return: A pointer to a duplicate of the string given
+ * _su - copies the given string.
+ * @ring: a strng to be copied
+ * Return: a reference to a copy of the provided string
 */
 
 char *_su(char *ring)
@@ -49,10 +49,10 @@ char *_su(char *ring)
 }
 
 /**
- * split_line - splits a string into a 2d array based on delim
- * @ring: string to split
- * @delim: delimiter to take into account to split the string
- * Return: A double pointer of chars with the string splitted
+ * split_line - separates a string based on delim into a 2d array
+ * @ring: split a string
+ * @delim: delimiter to consider while splitting the string.
+ * Return: a split-up double pointer of characters with the string.
 */
 
 char **split_line(char *ring, char *delim)
@@ -100,10 +100,10 @@ char **split_line(char *ring, char *delim)
 }
 
 /**
- * _sc - Compares two arrays
- * @origin: 1st array
- * @su: 2nd array
- * Return: 1 if same, 0 if different
+ * _sc - two arrays are compared
+ * @origin: the first array
+ * @su: the second array
+ * Return: 1 if it is similar0, 0 if it is not
 */
 
 int _sc(char *origin, char *su)
@@ -123,9 +123,9 @@ int _sc(char *origin, char *su)
 }
 
 /**
- * nums - Calculates the ammount of digits
+ * nums - determines the number of digits.
  * @n: number to evaluate
- * Return: The ammount of digits
+ * Return: Quantity of digits
 */
 
 char *nums(int n)

@@ -19,7 +19,7 @@ int ex(char *inp, char **argum, char *va)
 	ch = fork();
 
 	if (ch != 0)
-		wait(NULL);
+		wa();
 
 	if (ch == 0 && execve(inp, argum, NULL) == -1)
 	{

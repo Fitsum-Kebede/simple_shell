@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * gen - gets the env variable needed
- * @name: name of the env variable
- * @environ: env variables
- * Return: the line with the env variable
+ * gen - obtains the required env variable
+ * @name: the env variable's name
+ * @environ: variables in env
+ * Return: the line containing the env parameter
 */
 
 char *gen(char *name, char **environ)
@@ -23,7 +23,15 @@ char *gen(char *name, char **environ)
 	}
 	return (NULL);
 }
+/**
+ * wa - uhkhkhhhhghhjhjgjgjgjgj
+ * @NULL - hjhjkhk
+ */
 
+void wa(void)
+{
+	wait(NULL);
+}
 /**
  * gpath - Gets the PATH variable
  * @environ: enviroment variable
