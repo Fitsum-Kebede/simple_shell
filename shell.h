@@ -34,4 +34,5 @@ char *getpath(char **environ, char *input);
 int arraycleaner(char **str);
 
 
-#endif
+#endif /* ifndef NARITA_H */
+

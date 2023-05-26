@@ -174,3 +174,4 @@ char *line_maker(size_t size)
 
 	return (input);
 }
+

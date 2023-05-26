@@ -19,3 +19,4 @@ int arraycleaner(char **str)
 
 	return (1);
 }
+
