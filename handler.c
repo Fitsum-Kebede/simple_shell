@@ -1,4 +1,4 @@
-#include "header.h"
+#include "shell.h"
 
 /**
  * arraycleaner - Clears a double pointer

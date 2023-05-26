@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "header.h"
+#include "shell.h"
 
 /**
  * getenviroment - gets the env variable needed
