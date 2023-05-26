@@ -10,6 +10,7 @@ int _sle(char *ring)
 {
 	int a;
 
+	/* loop through the string until reaching the null terminat */
 	for (a = 0; ring[a]; a++)
 	{
 	}
@@ -28,17 +29,16 @@ char *_su(char *ring)
 	char *dup;
 	int a;
 
+	/* loop through the duplicated string */
 	for (a = 0; ring[a]; a++)
 	{
 	}
-
 	dup = malloc((sizeof(char) * a) + 1);
 	if (!dup)
 	{
 		write(2, "Unable to allocate memory", 25);
 		exit(1);
 	}
-
 	for (a = 0; ring[a]; a++)
 	{
 		dup[a] = ring[a];

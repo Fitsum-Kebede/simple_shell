@@ -5,19 +5,21 @@
 
 
 /**
- * ex - Runs a given program
- * @inp: inp to run
- * @argum: argum to pass to execve
- * @va: name of the program
- * Return: -1 if it breaks, 0 if it doesn't
+ * ex - runs the specified application
+ * @inp: input to excute
+ * @argum: argument to pass
+ * @va: the name of the program
+ * Return: -1 if it breaks, 0 if it doesn't break
 */
 
 int ex(char *inp, char **argum, char *va)
 {
 	int ch;
 
+	/* create a new process by duplicating the calling process */
 	ch = fork();
 
+	/* if the process is the child and fails to execute the input */
 	if (ch != 0)
 		wait(NULL);
 
@@ -32,11 +34,11 @@ int ex(char *inp, char **argum, char *va)
 }
 
 /**
- * main - Entry function
- * @ac: Ammount of argum passed
- * @va: Arguments passed
+ * main - Entry point
+ * @ac: passed amount of arg
+ * @va: passed arg
  * @env: Enviroment variables
- * Return: 0 if success
+ * Return: 0 if (success)
 */
 
 int main(int ac __attribute__((unused)), char **va, char **env)
@@ -45,6 +47,7 @@ int main(int ac __attribute__((unused)), char **va, char **env)
 	size_t size = 32;
 	int *error_value = malloc(sizeof(int)), read, error, lns = 1;
 
+	/* initialize the error value to 0 */
 	*error_value = 0;
 	line = li_m(size);
 	if (!line)
@@ -84,14 +87,14 @@ int main(int ac __attribute__((unused)), char **va, char **env)
 
 
 /**
- * cmdshell - our cmdshell
- * @line: the imput of the user
- * @div: proccessed input
- * @lns: ammount of lns
+ * cmdshell - simpleshell
+ * @line: input provided by the user
+ * @div: input
+ * @lns: the amt
  * @env: enviroment variable
  * @va: argum
  * @err: error pointer
- * Return: 10 if success, 0 if exit, 1 if continue, -1 if return-1
+ * Return: 10 success, 0  exit, 1 continue, -1 if return-1
 */
 
 int cmdshell(char *line, char **div, int lns, char **env, char **va, int *err)
@@ -138,10 +141,10 @@ int cmdshell(char *line, char **div, int lns, char **env, char **va, int *err)
 }
 
 /**
- * no_file - Prints the error message
- * @lns: Ammount of lines so far
+ * no_file - ouput the err message
+ * @lns: lines
  * @div: proccessed input
- * @va: ammount of lines
+ * @va: amnt of lines
 */
 
 void no_file(int lns, char *div, char **va)
@@ -158,7 +161,7 @@ void no_file(int lns, char *div, char **va)
 }
 
 /**
- * li_m - Creates the input variable
+ * li_m - the input variable is made
  * @size: Size of the malloc
  * Return: input
  */

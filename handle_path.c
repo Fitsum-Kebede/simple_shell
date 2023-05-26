@@ -25,10 +25,10 @@ char *gen(char *name, char **environ)
 }
 
 /**
- * gpath - Gets the PATH variable
- * @environ: enviroment variable
- * @input: inp pass by user
- * Return: the splitted PATH variable
+ * gpath - the variable PATH is obtained
+ * @environ: enviroment factor
+ * @input: input/command passe by the user
+ * Return: the PATH variable that was divided
 */
 
 char *gpath(char **environ, char *input)

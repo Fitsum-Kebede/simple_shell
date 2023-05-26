@@ -1,9 +1,8 @@
 #include "shell.h"
 
 /**
- * arrfix - Clears a double pointer
- * @ring: Double pointer to clean
- *
+ * arrfix - A double pointer is cleared
+ * @ring: Double pointer to be cleaned
  * Return: 1
  */
 

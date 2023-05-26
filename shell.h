@@ -1,6 +1,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
+
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
@@ -11,27 +12,28 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-/* -------- Prototypes -------- */
-
 /* simple_shell.c */
+
 int ex(char *inp, char **argum, char *va);
 int cmdshell(char *, char **, int, char **, char **, int *);
 void no_file(int lns, char *div, char **va);
 char *li_m(size_t size);
 
-/* str_handlers */
+/* the string handler functions */
+
 int _sle(char *ring);
 char *_su(char *ring);
 char **split_line(char *ring, char *delim);
 int _sc(char *origin, char *su);
 char *nums(int n);
 
-/* path_handler.c */
+/* the path handler functions */
+
 char *gen(char *name, char **environ);
 char *gpath(char **environ, char *input);
 
-/* memory_handler.c */
+/* the memory handler functions */
 int arrfix(char **ring);
 
-#endif /* ifndef NARITA_H */
+#endif
 
