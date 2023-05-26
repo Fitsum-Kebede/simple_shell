@@ -32,7 +32,6 @@ char *gpath(char **environ, char *input);
 
 /* memory_handler.c */
 int arrfix(char **ring);
-void wa();
 
 #endif /* ifndef NARITA_H */
 

@@ -23,15 +23,7 @@ char *gen(char *name, char **environ)
 	}
 	return (NULL);
 }
-/**
- * wa - uhkhkhhhhghhjhjgjgjgjgj
- * @NULL - hjhjkhk
- */
 
-void wa(void)
-{
-	wait(NULL);
-}
 /**
  * gpath - Gets the PATH variable
  * @environ: enviroment variable
