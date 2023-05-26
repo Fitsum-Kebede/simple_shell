@@ -1,156 +1,156 @@
 #include "shell.h"
 
 /**
- * _strlen - Counts the length of a string
- * @str: string to count
+ * _sle - Counts the length of a string
+ * @ring: string to count
  *
  * Return: the ammount of chars of the string
 */
 
-int _strlen(char *str)
+int _sle(char *ring)
 {
-	int i;
+	int a;
 
-	for (i = 0; str[i]; i++)
+	for (a = 0; ring[a]; a++)
 	{
 	}
 
-	return (i);
+	return (a);
 }
 
 /**
- * _strdup - duplicates a given string
- * @str: string to duplicae
+ * _su - duplicates a given string
+ * @ring: string to duplicae
  *
  * Return: A pointer to a duplicate of the string given
 */
 
-char *_strdup(char *str)
+char *_su(char *ring)
 {
 	char *dup;
-	int i;
+	int a;
 
-	for (i = 0; str[i]; i++)
+	for (a = 0; ring[a]; a++)
 	{
 	}
 
-	dup = malloc((sizeof(char) * i) + 1);
+	dup = malloc((sizeof(char) * a) + 1);
 	if (!dup)
 	{
 		write(2, "Unable to allocate memory", 25);
 		exit(1);
 	}
 
-	for (i = 0; str[i]; i++)
+	for (a = 0; ring[a]; a++)
 	{
-		dup[i] = str[i];
+		dup[a] = ring[a];
 	}
-	dup[i] = '\0';
+	dup[a] = '\0';
 
 	return (dup);
 }
 
 /**
  * split_line - splits a string into a 2d array based on delim
- * @str: string to split
+ * @ring: string to split
  * @delim: delimiter to take into account to split the string
  *
  * Return: A double pointer of chars with the string splitted
 */
 
-char **split_line(char *str, char *delim)
+char **split_line(char *ring, char *delim)
 {
-	int i, j, chars, lines = 1;
+	int a, b, chars, lns = 1;
 	char **splitted, *token, *strdup;
 
-	strdup = _strdup(str);
+	strdup = _su(ring);
 
-	for (i = 0; strdup[i]; i++)
-		if (strdup[i] == delim[0] || strdup[i] == delim[1])
-			lines++;
+	for (a = 0; strdup[a]; a++)
+		if (strdup[a] == delim[0] || strdup[a] == delim[1])
+			lns++;
 
-	splitted = malloc((lines + 1) * sizeof(char *));
+	splitted = malloc((lns + 1) * sizeof(char *));
 	if (!splitted)
 	{
 		write(2, "Unable to allocate memory", 25);
 		exit(1);
 	}
 	token = strtok(strdup, delim);
-	j = 0;
+	b = 0;
 	while (token)
 	{
-		chars = _strlen(token);
-		splitted[j] = malloc((chars + 1) * sizeof(char));
+		chars = _sle(token);
+		splitted[b] = malloc((chars + 1) * sizeof(char));
 		if (!splitted)
 		{
 			write(2, "Unable to allocate memory", 25);
-			for (; j != 0 ; j--)
-				free(splitted[j - 1]);
+			for (; b != 0 ; b--)
+				free(splitted[b - 1]);
 			free(splitted);
 			exit(1);
 			}
-		for (i = 0; i < chars; i++)
+		for (a = 0; a < chars; a++)
 		{
-			splitted[j][i] = token[i];
+			splitted[b][a] = token[a];
 		}
-		splitted[j][i] = '\0';
-		j++;
+		splitted[b][a] = '\0';
+		b++;
 		token = strtok(0, delim);
 	}
-	splitted[j] = NULL;
+	splitted[b] = NULL;
 	free(strdup);
 	return (splitted);
 }
 
 /**
- * _strcmp - Compares two arrays
+ * _sc - Compares two arrays
  * @origin: 1st array
- * @comp: 2nd array
+ * @su: 2nd array
  *
  * Return: 1 if same, 0 if different
 */
 
-int _strcmp(char *origin, char *comp)
+int _sc(char *origin, char *su)
 {
-	int i;
+	int a;
 
-	for (i = 0; origin[i] && comp[i]; i++)
+	for (a = 0; origin[a] && su[a]; a++)
 	{
-		if (origin[i] != comp[i])
+		if (origin[a] != su[a])
 			break;
 	}
 
-	if (i == _strlen(origin) && i == _strlen(comp))
+	if (a == _sle(origin) && a == _sle(su))
 		return (1);
 	else
 		return (0);
 }
 
 /**
- * numbertostring - Calculates the ammount of digits
+ * nums - Calculates the ammount of digits
  * @n: number to evaluate
  *
  * Return: The ammount of digits
 */
 
-char *numbertostring(int n)
+char *nums(int n)
 {
-	int i = 0, j, number = n;
+	int a = 0, b, number = n;
 	char *strnumber;
 
-	for (i = 0; n != 0; i++)
+	for (a = 0; n != 0; a++)
 	{
 		n = n / 10;
 	}
 
-	strnumber = malloc(sizeof(char) * (i + 1));
+	strnumber = malloc(sizeof(char) * (a + 1));
 
-	for (j = 1; j <= i; j++)
+	for (b = 1; b <= a; b++)
 	{
-		strnumber[i - j] = (number % 10) + '0';
+		strnumber[a - b] = (number % 10) + '0';
 		number = number / 10;
 	}
-	strnumber[i] = '\0';
+	strnumber[a] = '\0';
 	return (strnumber);
 }
 

@@ -2,26 +2,26 @@
 
 
 /**
- * execute - Runs a given program
- * @command: command to run
- * @arguments: arguments to pass to execve
- * @av: name of the program
+ * ex - Runs a given program
+ * @inp: inp to run
+ * @argum: argum to pass to execve
+ * @va: name of the program
  *
  * Return: -1 if it breaks, 0 if it doesn't
 */
 
-int execute(char *command, char **arguments, char *av)
+int ex(char *inp, char **argum, char *va)
 {
-	int child;
+	int ch;
 
-	child = fork();
+	ch = fork();
 
-	if (child != 0)
+	if (ch != 0)
 		wait(NULL);
 
-	if (child == 0 && execve(command, arguments, NULL) == -1)
+	if (ch == 0 && execve(inp, argum, NULL) == -1)
 	{
-		write(2, av, _strlen(av));
+		write(2, va, _sle(va));
 		perror(": ");
 		return (errno);
 	}
@@ -31,27 +31,27 @@ int execute(char *command, char **arguments, char *av)
 
 /**
  * main - Entry function
- * @ac: Ammount of arguments passed
- * @av: Arguments passed
+ * @ac: Ammount of argum passed
+ * @va: Arguments passed
  * @env: Enviroment variables
  *
  * Return: 0 if success
 */
 
-int main(int ac __attribute__((unused)), char **av, char **env)
+int main(int ac __attribute__((unused)), char **va, char **env)
 {
 	char *line, **splitt;
 	size_t size = 32;
-	int *error_value = malloc(sizeof(int)), read, error, lines = 1;
+	int *error_value = malloc(sizeof(int)), read, error, lns = 1;
 
 	*error_value = 0;
-	line = line_maker(size);
+	line = li_m(size);
 	if (!line)
 		exit(-1);
 	while (1)
 	{
 		if (isatty(0) == 1)
-			write(1, "(mcpshell) ", 11);
+			write(1, "smpl_shel# ", 11);
 		read = getline(&line, &size, stdin);
 		if (read == -1)
 			break;
@@ -64,7 +64,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			free(splitt);
 			continue;
 		}
-		switch (shell(line, splitt, lines, env, av, error_value))
+		switch (cmdshell(line, splitt, lns, env, va, error_value))
 		{
 			case 0:
 				error = *error_value;
@@ -73,7 +73,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			case 1:
 				continue;
 		}
-		lines++;
+		lns++;
 	}
 	free(line);
 	error = *error_value;
@@ -83,88 +83,88 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 
 /**
- * shell - our shell
+ * cmdshell - our cmdshell
  * @line: the imput of the user
- * @split: proccessed input
- * @lines: ammount of lines
+ * @div: proccessed input
+ * @lns: ammount of lns
  * @env: enviroment variable
- * @av: arguments
+ * @va: argum
  * @err: error pointer
  *
  * Return: 10 if success, 0 if exit, 1 if continue, -1 if return-1
 */
 
-int shell(char *line, char **split, int lines, char **env, char **av, int *err)
+int cmdshell(char *line, char **div, int lns, char **env, char **va, int *err)
 {
-	char *command;
-	int i;
+	char *inp;
+	int a;
 	struct stat st;
 
-	if (_strcmp(split[0], "exit"))
+	if (_sc(div[0], "exit"))
 	{
-		arraycleaner(split);
+		arrfix(div);
 		free(line);
 		return (0);
 	}
-	if (_strcmp(split[0], "env"))
+	if (_sc(div[0], "env"))
 	{
-		for (i = 0; env[i]; i++)
+		for (a = 0; env[a]; a++)
 		{
-			write(1, env[i], _strlen(env[i]));
+			write(1, env[a], _sle(env[a]));
 			write(1, "\n", 1);
 		}
-		return (arraycleaner(split));
+		return (arrfix(div));
 	}
-	if (stat(split[0], &st) == 0)
+	if (stat(div[0], &st) == 0)
 	{
-		*err = execute(split[0], split, av[0]);
-		return (arraycleaner(split));
+		*err = ex(div[0], div, va[0]);
+		return (arrfix(div));
 	}
-	command = getpath(env, split[0]);
-	if (!command)
+	inp = gpath(env, div[0]);
+	if (!inp)
 	{
 		*err = 127;
-		not_found(lines, split[0], av);
+		no_file(lns, div[0], va);
 	}
-	else if (execute(command, split, av[0]) == -1)
+	else if (ex(inp, div, va[0]) == -1)
 	{
 		perror(": ");
 		*err = errno;
 		return (0);
 	}
-	arraycleaner(split);
-	free(command);
+	arrfix(div);
+	free(inp);
 	return (10);
 }
 
 /**
- * not_found - Prints the error message
- * @lines: Ammount of lines so far
- * @split: proccessed input
- * @av: ammount of lines
+ * no_file - Prints the error message
+ * @lns: Ammount of lines so far
+ * @div: proccessed input
+ * @va: ammount of lines
 */
 
-void not_found(int lines, char *split, char **av)
+void no_file(int lns, char *div, char **va)
 {
-	char *strlines = numbertostring(lines);
+	char *strlines = nums(lns);
 
-	write(2, av[0], _strlen(av[0]));
+	write(2, va[0], _sle(va[0]));
 	write(2, ": ", 2);
-	write(2, strlines, _strlen(strlines));
+	write(2, strlines, _sle(strlines));
 	write(2, ": ", 2);
-	write(2, split, _strlen(split));
+	write(2, div, _sle(div));
 	write(2, ": not found\n", 12);
 	free(strlines);
 }
 
 /**
- * line_maker - Creates the input variable
+ * li_m - Creates the input variable
  * @size: Size of the malloc
  *
  * Return: input
  */
 
-char *line_maker(size_t size)
+char *li_m(size_t size)
 {
 	char *input;
 

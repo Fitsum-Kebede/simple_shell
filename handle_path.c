@@ -1,74 +1,74 @@
 #include "shell.h"
 /**
- * getenviroment - gets the env variable needed
+ * gen - gets the env variable needed
  * @name: name of the env variable
  * @environ: env variables
  *
  * Return: the line with the env variable
 */
 
-char *getenviroment(char *name, char **environ)
+char *gen(char *name, char **environ)
 {
-	int i, j, k;
+	int a, b, k;
 
-	k = _strlen(name);
-	for (i = 0; environ[i]; i++)
+	k = _sle(name);
+	for (a = 0; environ[a]; a++)
 	{
-		for (j = 0; environ[i][j] == name[j]; j++)
+		for (b = 0; environ[a][b] == name[b]; b++)
 		{
 		}
-		if (j == k && environ[i][j] == '=')
-			return (environ[i]);
+		if (b == k && environ[a][b] == '=')
+			return (environ[a]);
 
 	}
 	return (NULL);
 }
 
 /**
- * getpath - Gets the PATH variable
+ * gpath - Gets the PATH variable
  * @environ: enviroment variable
- * @input: command pass by user
+ * @input: inp pass by user
  *
  * Return: the splitted PATH variable
 */
 
-char *getpath(char **environ, char *input)
+char *gpath(char **environ, char *input)
 {
-	char **path = NULL, *command;
-	unsigned int input_len, path_len, i, j, k;
+	char **path = NULL, *inp;
+	unsigned int input_len, path_len, a, b, k;
 	struct stat st;
 
-	path = split_line(getenviroment("PATH", environ), "=:");
-	input_len = _strlen(input);
+	path = split_line(gen("PATH", environ), "=:");
+	input_len = _sle(input);
 
-	for (i = 1; path[i]; i++)
+	for (a = 1; path[a]; a++)
 	{
-		path_len = _strlen(path[i]);
-		command = malloc(sizeof(char) * (path_len + input_len + 2));
-		if (!command)
+		path_len = _sle(path[a]);
+		inp = malloc(sizeof(char) * (path_len + input_len + 2));
+		if (!inp)
 		{
 			write(2, "Unable to allocate memory", 25);
 			exit(1);
 		}
 
-		for (j = 0; path[i][j]; j++)
-			command[j] = path[i][j];
+		for (b = 0; path[a][b]; b++)
+			inp[b] = path[a][b];
 
-		command[j++] = '/';
+		inp[b++] = '/';
 
 		for (k = 0; input[k]; k++)
-			command[j + k] = input[k];
+			inp[b + k] = input[k];
 
-		command[j + k] = '\0';
+		inp[b + k] = '\0';
 
-		if (stat(command, &st) == 0)
+		if (stat(inp, &st) == 0)
 		{
-			arraycleaner(path);
-			return (command);
+			arrfix(path);
+			return (inp);
 		}
-		free(command);
+		free(inp);
 	}
-	arraycleaner(path);
+	arrfix(path);
 
 	return (NULL);
 }

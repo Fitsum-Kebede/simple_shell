@@ -1,21 +1,21 @@
 #include "shell.h"
 
 /**
- * arraycleaner - Clears a double pointer
- * @str: Double pointer to clean
+ * arrfix - Clears a double pointer
+ * @ring: Double pointer to clean
  *
  * Return: 1
  */
 
-int arraycleaner(char **str)
+int arrfix(char **ring)
 {
-	int i;
+	int a;
 
-	for (i = 0; str[i]; i++)
+	for (a = 0; ring[a]; a++)
 	{
-		free(str[i]);
+		free(ring[a]);
 	}
-	free(str);
+	free(ring);
 
 	return (1);
 }

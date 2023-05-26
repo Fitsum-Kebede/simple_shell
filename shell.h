@@ -14,24 +14,24 @@
 /* -------- Prototypes -------- */
 
 /* simple_shell.c */
-int execute(char *command, char **arguments, char *av);
-int shell(char *, char **, int, char **, char **, int *);
-void not_found(int lines, char *split, char **av);
-char *line_maker(size_t size);
+int ex(char *inp, char **argum, char *va);
+int cmdshell(char *, char **, int, char **, char **, int *);
+void no_file(int lns, char *div, char **va);
+char *li_m(size_t size);
 
 /* str_handlers */
-int _strlen(char *str);
-char *_strdup(char *str);
-char **split_line(char *str, char *delim);
-int _strcmp(char *origin, char *comp);
-char *numbertostring(int n);
+int _sle(char *ring);
+char *_su(char *ring);
+char **split_line(char *ring, char *delim);
+int _sc(char *origin, char *su);
+char *nums(int n);
 
 /* path_handler.c */
-char *getenviroment(char *name, char **environ);
-char *getpath(char **environ, char *input);
+char *gen(char *name, char **environ);
+char *gpath(char **environ, char *input);
 
 /* memory_handler.c */
-int arraycleaner(char **str);
+int arrfix(char **ring);
 
 
 #endif /* ifndef NARITA_H */
